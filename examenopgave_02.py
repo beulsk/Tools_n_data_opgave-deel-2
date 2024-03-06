@@ -50,7 +50,7 @@ totaal = []
 
 for aantal in range(amount_of_jokes):
 
-    volledige_info_joke = requests.get(url, headers=headers).json()
+    volledige_info_joke = requests.get(joke_url, headers=headers).json()
 
     id_joke = volledige_info_joke['id']
     # print(id_joke)
@@ -77,3 +77,12 @@ for aantal in range(amount_of_jokes):
     totaal.append(output.copy())
     
 print(yaml.dump(totaal))
+pprint(totaal[2])
+
+data = {
+    'name' : 'Codedamn'
+}
+
+response = requests.post("https://httpbin.org/post", data)
+print(response.text)
+
