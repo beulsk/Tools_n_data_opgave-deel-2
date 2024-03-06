@@ -28,6 +28,9 @@ jokes:
   - .. <tot aantal jokes bereikt is>
 """
 
+# https://httpbin.org/#/HTTP_Methods/post_post
+post_url = "https://httpbin.org/post"
+
 joke_url = "https://icanhazdadjoke.com"
 amount_of_jokes = 5
 
