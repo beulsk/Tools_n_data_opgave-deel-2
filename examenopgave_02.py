@@ -27,12 +27,18 @@ jokes:
     id: <joke id>
   - .. <tot aantal jokes bereikt is>
 """
-
-# https://httpbin.org/#/HTTP_Methods/post_post
 post_url = "https://httpbin.org/post"
-
 joke_url = "https://icanhazdadjoke.com"
 amount_of_jokes = 5
+
+
+# 1) Maak een public repository aan op jouw gitlab/github account voor dit project
+
+    # https://github.com/beulsk/Tools_n_data_opgave-deel-2.git
+    # git@github.com:beulsk/Tools_n_data_opgave-deel-2.git
+    # gh repo clone beulsk/Tools_n_data_opgave-deel-2
+
+
 
 import requests
 import json
@@ -41,20 +47,27 @@ import yaml
 from pprint import pprint
 
 url = "https://icanhazdadjoke.com"
-headers = {"Accept": "application/json"}
+headers = {"Accept": "application/json"}  
 
-getal  = None
+# 2) Gebruik python om de gegeven joke_url aan te spreken
+
 twintig_eerste_dict = []
 output = []
 totaal = []
 
-for aantal in range(amount_of_jokes):
+for aantal in range(amount_of_jokes):   #range(start, end, step)  
+                                        # De standaard waarde van start is 0 en step is 1. #
+                                        # Dus als we range(amount_of_jokes) gebruiken dan staat hier eigenlijk range(0, amount_of_jokes, 5)
 
     volledige_info_joke = requests.get(joke_url, headers=headers).json()
 
     id_joke = volledige_info_joke['id']
-    # print(id_joke)
     joke_gedeelte = volledige_info_joke['joke']
+
+# 3)  Gebruik regex om de volgende data te extracten:
+#             - De eerste 20 tekens van de joke
+
+# "zoekintro"  = variable gebruikt in regex om eerste 20 karakters te bepalen
     regex_joke_gedeelte = r"(^(?P<zoekintro>[A-Za-z0-9\s\W]{20}))"
 
     for match in re.finditer(regex_joke_gedeelte,joke_gedeelte):
@@ -67,7 +80,8 @@ for aantal in range(amount_of_jokes):
 # print(joke_gedeelte) 
 # print(" ")
 # print(id_joke)
-            
+     
+       
     output = {
     "intro": twintig_eerste,
     "joke": joke_gedeelte,
