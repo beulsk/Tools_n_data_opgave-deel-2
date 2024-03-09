@@ -31,7 +31,6 @@ post_url = "https://httpbin.org/post"
 joke_url = "https://icanhazdadjoke.com"
 amount_of_jokes = 5
 
-# kkka
 
 # 1) Maak een public repository aan op jouw gitlab/github account voor dit project
 
