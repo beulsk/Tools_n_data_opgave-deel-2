@@ -1,4 +1,4 @@
-en nu vanaf hier
+dat zie ik en nu vanaf hier
 
 en nu vanaf de PC
 
