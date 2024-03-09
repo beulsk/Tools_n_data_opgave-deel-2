@@ -38,7 +38,9 @@ amount_of_jokes = 5
     # git@github.com:beulsk/Tools_n_data_opgave-deel-2.git
     # gh repo clone beulsk/Tools_n_data_opgave-deel-2
 
-
+post_url = "https://httpbin.org/post"
+joke_url = "https://icanhazdadjoke.com"
+amount_of_jokes = 5
 
 import requests
 import json
@@ -46,20 +48,21 @@ import re
 import yaml
 from pprint import pprint
 
-url = "https://icanhazdadjoke.com"
 headers = {"Accept": "application/json"}  
 
 # 2) Gebruik python om de gegeven joke_url aan te spreken
 
-twintig_eerste_dict = []
+twintig_eerste_diction = []
 output = []
 totaal = []
 
 for aantal in range(amount_of_jokes):   #range(start, end, step)  
-                                        # De standaard waarde van start is 0 en step is 1. #
-                                        # Dus als we range(amount_of_jokes) gebruiken dan staat hier eigenlijk range(0, amount_of_jokes, 5)
+                                        # De standaard waarde van start is 0 en step is 1
+                                        # Dus met range(amount_of_jokes) == range(0, amount_of_jokes, 1)
 
     volledige_info_joke = requests.get(joke_url, headers=headers).json()
+    
+    jokenumber = aantal + 1
 
     id_joke = volledige_info_joke['id']
     joke_gedeelte = volledige_info_joke['joke']
@@ -71,18 +74,17 @@ for aantal in range(amount_of_jokes):   #range(start, end, step)
     regex_joke_gedeelte = r"(^(?P<zoekintro>[A-Za-z0-9\s\W]{20}))"
 
     for match in re.finditer(regex_joke_gedeelte,joke_gedeelte):
-        twintig_eerste_dict = match.groupdict()
+        twintig_eerste_diction = match.groupdict()
         
-    twintig_eerste = (twintig_eerste_dict["zoekintro"])
+    twintig_eerste = (twintig_eerste_diction["zoekintro"])
 
 # print(twintig_eerste)
-# print(" ")
 # print(joke_gedeelte) 
-# print(" ")
 # print(id_joke)
      
        
     output = {
+    # "jokenumber": jokenumber,
     "intro": twintig_eerste,
     "joke": joke_gedeelte,
     "id": id_joke 
@@ -92,7 +94,7 @@ for aantal in range(amount_of_jokes):   #range(start, end, step)
     
 print(yaml.dump(totaal))
 
-# Doe een post naar de post_url.
+# Doe een post naar de post_url.  post_url = "https://httpbin.org/post"
 #   Stuur in de post een parameter genaamd "naam" mee met als waarde jouw voornaam
 
 naam_posten ={"naam": "Beuls", "voornaam": "Karel"}
@@ -102,7 +104,7 @@ antwoord = requests.post(post_url, json=naam_posten)
 antwoord_data = antwoord.json()
 
 print(" ")
-pprint(antwoord)
+pprint(f"(Status: {antwoord}")
 print(" ")
 pprint(antwoord_data)
 
