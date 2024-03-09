@@ -100,7 +100,7 @@ print(yaml.dump(totaal))
 naam_posten ={"naam": "Beuls", "voornaam": "Karel"}
 antwoord = requests.post(post_url, json=naam_posten)
 
-#   Output het hele antwoord naar de terminal
+#   Output het hele antwoord naar de terminal ja
 antwoord_data = antwoord.json()
 
 print(" ")
