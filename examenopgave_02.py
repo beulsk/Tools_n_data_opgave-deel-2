@@ -77,12 +77,26 @@ for aantal in range(amount_of_jokes):
     totaal.append(output.copy())
     
 print(yaml.dump(totaal))
-pprint(totaal[2])
 
-data = {
-    'name' : 'Codedamn'
-}
+# Doe een post naar de post_url.
+#   Stuur in de post een parameter genaamd "naam" mee met als waarde jouw voornaam
 
-response = requests.post("https://httpbin.org/post", data)
-print(response.text)
+naam_posten ={"naam": "Beuls", "voornaam": "Karel"}
+antwoord = requests.post(post_url, json=naam_posten)
+
+#   Output het hele antwoord naar de terminal
+antwoord_data = antwoord.json()
+
+print(" ")
+pprint(antwoord)
+print(" ")
+pprint(antwoord_data)
+
+print(" ")
+print(" ")
+
+#    Haal uit het antwoord van de call jouw ip adres (origin) en geef dit weer met een f string
+
+print(f"Dit werd gepost door {antwoord_data['json']['naam']} {antwoord_data['json']['voornaam']}")
+print(f"Vanaf zijn PC met IP adres {antwoord_data['origin']}")
 
