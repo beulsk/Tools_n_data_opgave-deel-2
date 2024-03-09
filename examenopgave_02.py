@@ -51,7 +51,7 @@ from pprint import pprint
 
 headers = {"Accept": "application/json"}  
 
-# 2) Gebruik python om de gegeven joke_url aan te spreken
+# 2) Gebruik python om de gegeven joke_url aan te spreken en dan komt ht goed
 
 twintig_eerste_diction = []
 output = []
