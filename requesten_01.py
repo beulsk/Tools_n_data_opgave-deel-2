@@ -1,5 +1,7 @@
 en nu vanaf hier
 
+en nu vanaf de PC
+
 import requests
 import json
 
